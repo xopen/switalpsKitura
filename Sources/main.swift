@@ -29,7 +29,7 @@ router.post("/create")  { request, response, next in
     case .json(let jsonBody):
         let title = jsonBody["title"].string
         let body = jsonBody["body"].string
-        if title && body {
+        if title  != nil && body != nil {
             response.send("blog created")
         } else {
             response.send("error")
