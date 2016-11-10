@@ -1,2 +1,5 @@
-# switalpsKitura
-Team 6
+# Kitura on Heroku
+
+team 6
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)

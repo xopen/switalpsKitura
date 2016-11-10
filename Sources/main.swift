@@ -1,4 +1,10 @@
 import Kitura
+import HeliumLogger
+import Foundation
+
+HeliumLogger.use()
+
+import Kitura
 
 // Create a new router
 let router = Router()
@@ -18,7 +24,9 @@ router.post("/create") {
 }
 
 // Add an HTTP server and connect it to the router
-Kitura.addHTTPServer(onPort: 8090, with: router)
+let port = Int(ProcessInfo.processInfo.environment["PORT"] ?? "8090") ?? 8090
+Kitura.addHTTPServer(onPort: port, with: router)
+Kitura.run()
 
 // Start the Kitura runloop (this call never returns)
 Kitura.run()
