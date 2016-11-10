@@ -1,6 +1,7 @@
 import Kitura
 import HeliumLogger
 import Foundation
+import SwiftyJSON
 
 HeliumLogger.use()
 
@@ -8,6 +9,8 @@ import Kitura
 
 // Create a new router
 let router = Router()
+
+router.all("/create", middleware: BodyParser())
 
 // Handle HTTP GET requests to /
 router.get("/") {
