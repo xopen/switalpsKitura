@@ -16,10 +16,24 @@ router.get("/") {
     next()
 }
 
-router.post("/create") {
-    request, response, next in
-    print(request)
-    response.send("ok")
+router.post("/create")  { request, response, next in
+    guard let parsedBody = request.body else {
+        next()
+        return
+    }
+    
+    switch(parsedBody) {
+    case .json(let jsonBody):
+        let title = jsonBody["title"].string
+        let body = jsonBody["body"].string
+        if title && body {
+            response.send("blog created")
+        } else {
+            response.send("error")
+        }
+    default:
+        break
+    }
     next()
 }
 
