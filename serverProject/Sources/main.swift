@@ -10,6 +10,13 @@ router.get("/") {
     next()
 }
 
+router.post("/create") {
+    request, response, next in
+    print(request)
+    response.send("ok")
+    next()
+}
+
 // Add an HTTP server and connect it to the router
 Kitura.addHTTPServer(onPort: 8090, with: router)
 
