@@ -5,8 +5,6 @@ import SwiftyJSON
 
 HeliumLogger.use()
 
-import Kitura
-
 // Create a new router
 let router = Router()
 
@@ -24,7 +22,7 @@ router.post("/create")  { request, response, next in
         next()
         return
     }
-    
+
     switch(parsedBody) {
     case .json(let jsonBody):
         let title = jsonBody["title"].string
